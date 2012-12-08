@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     @posts = Post.all
 #   @ak = do_web_thing(post)
     #Code block goes back here.
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -84,8 +85,6 @@ class PostsController < ApplicationController
     end
   end
 
-
-
   def do_web_thing
     @posts = Post.all
     @posts.each do |post|
@@ -104,20 +103,17 @@ class PostsController < ApplicationController
           detail = doc2.at_css("title").text
           diversity = doc2.at_css("ul.personal_ratings li:last div:nth-child(2)").text
           points = doc2.at_css("ul.personal_ratings li:last div:nth-child(7) span").text
-          puts detail.inspect
-
-          puts points.inspect.to_i
-
+          #puts detail.inspect
+          #puts points.to_i
           post.name = post.name
           post.team_name = diversity.inspect
-          #post.team_elo = points.inspect.to_i  # < < < <IS THIS WORKING RIGHT?
           post.team_elo = points.to_i
-          puts post.team_elo
+          puts post.team_name + " " + post.team_elo.to_s
           post.save
-          post.sort_by(post.team_elo) #added this line after it worked. back out if fails
         end
       end
     end
+    @posts = @posts.order(team_elo).reverse
     render "index"
   end
 end
