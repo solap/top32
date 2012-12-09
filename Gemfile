@@ -8,6 +8,9 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'nokogiri'
 require 'open-uri'
+gem 'pry'
+gem 'pry-rails'
+
 
 
 #gem 'rubygems'

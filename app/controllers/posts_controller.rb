@@ -86,11 +86,12 @@ class PostsController < ApplicationController
   end
 
   def do_web_thing
+    #binding.pry
     lolking = "http://www.lolking.net"
     @posts = Post.all
+    @posts = @posts.sort_by!{|e| e.team_elo}.reverse
     #@posts = @posts.order("team_name desc")
 
-    #@posts = @posts.sort_by!{|post| post.team_elo}.reverse
     @posts.each do |post|
       #encode the string to deal with spaces
       encoded_summoner_name = CGI::escape(post.name)
@@ -135,8 +136,8 @@ class PostsController < ApplicationController
       end
       #puts "out summoner_summary_page_html.xpath"
     end
-
-    @posts = @posts.order("team_elo desc")
+    #binding.pry
+    #@posts = @posts.order("team_elo desc")
     render "index"
   end
   def yadda
