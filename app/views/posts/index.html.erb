@@ -25,4 +25,4 @@
 <br />
 
 <%= link_to 'New Post', new_post_path %>
-<%= link_to 'Refresh', {:action=>"do_web_thing",:controller=>"posts"}%>
+<%= link_to 'Refresh', {:controller=>"posts", :action=>"create_new_list"}%>

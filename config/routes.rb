@@ -1,7 +1,12 @@
 Top32::Application.routes.draw do
-  resources :posts
+  resources :posts do
+    collection do
+      get:create_new_list
+    end
+  end
 
-  get 'post/do_web_thing'=>"posts#do_web_thing"
+  #former line for declaring do_web_thing
+  #get 'post/do_web_thing'=>"posts#do_web_thing"
 
 
   # added for button experiment from http://stackoverflow.com/questions/12254239/simple-ruby-on-rails-button-action
