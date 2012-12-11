@@ -13,33 +13,23 @@ class Post < ActiveRecord::Base
 	        #No need to click on matches tab
 	        onclick = resultItem['onclick']
 	        if onclick.include? 'summoner/na'
-	          index = onclick.index("'") + 1
+				index = onclick.index("'") + 1
 				link = onclick[index..onclick.length-1]
-	          index = link.index("'")-1
-	          summoner_profile = lolking + link[0..index]
-	          summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
-
-	          #do Tadd's stuff here.
-	          	#puts "bout to do some cool stuff here."
+				index = link.index("'")-1
+				summoner_profile = lolking + link[0..index]
+				summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
 				summoner_profile_html.search('div.match_win','div.match_loss').each do |win_loss_div|
-				#puts "BEGIN *******: "
-
-				name = win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
-				puts win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
-				if !Post.exists?("name"=>name) then
-				if !Post.exists?("name"=>name) then
-					Post.create(:name=>name)
-				end
-
-=begin
-				puts win_loss_div.at_css('div.match_details_extended table tr td:first-child table tr:nth-child(2) td').content.strip
-				puts win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td').content.strip
-=end
+					if win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)') != nil then
+						name = win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
+						puts win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
+					end
+					if !Post.exists?("name"=>name) then
+						Post.create(:name=>name)
+					end
 	          end
 	        end
 	      end
 	    end
-	    #binding.pry
 	    #binding.pry
 	    lolking = "http://www.lolking.net"
 	    Post.all.each do |post|
