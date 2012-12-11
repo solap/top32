@@ -4,10 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-    #post = Post.new()
-    #post.create_team_list(@posts)
-#   @ak = do_web_thing(post)
+    @posts = Post.all.{|i| i.team_name}.sort_by{|e| e.team_elo}.reverse
     #Code block goes back here.
     respond_to do |format|
       format.html # index.html.erb
@@ -86,9 +83,8 @@ class PostsController < ApplicationController
     end
   end
   def create_new_list
-      @post=Post.all
-      post=Post.new()
-      post.create_team_list(@posts)
+    Post.create_team_list
+    redirect_to posts_path
   end
 
 end
