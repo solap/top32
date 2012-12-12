@@ -1,9 +1,12 @@
 Top32::Application.routes.draw do
+
   resources :posts do
     collection do
       get:create_new_list
     end
+
   end
+root to: "posts#index"
 
   #former line for declaring do_web_thing
   #get 'post/do_web_thing'=>"posts#do_web_thing"
