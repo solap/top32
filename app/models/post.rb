@@ -16,10 +16,10 @@ class Post < ActiveRecord::Base
 =end
 	    Post.all.each do |post|
 	    	details = post.get_team_details
-	    	puts "after details return"
-	    	details.to_s
+	    	binding.pry
+	    	binding.pry
 	    	post.update details
-	    	puts "post.update details"
+	    	binding.pry
 	    end
 	    #binding.pry
 	end
