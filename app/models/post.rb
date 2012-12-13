@@ -16,10 +16,8 @@ class Post < ActiveRecord::Base
 =end
 	    Post.all.each do |post|
 	    	details = post.get_team_details
-	    	binding.pry
-	    	binding.pry
-	    	post.update details
-	    	binding.pry
+	    	post.update_attributes(details)
+
 	    end
 	    #binding.pry
 	end

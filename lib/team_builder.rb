@@ -42,13 +42,14 @@ module TeamBuilder
 				summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
 				team_name = summoner_profile_html.at_css("ul.personal_ratings li:last div:nth-child(2)").text
 				if team_name != ""
-					puts "88"
 					points = summoner_profile_html.at_css("ul.personal_ratings li:last div:nth-child(7) span").text
 					detail = summoner_profile_html.at_css("title").text
+					puts points.to_s + team_name.inspect
+					details[:name]=name
+					details[:team_name]=team_name.inspect
+					details[:team_elo]=points.to_i
 				end
-				details[:name]=name
-				details[:team_name]=team_name.inspect
-				details[:team_elo]=points.to_i
+
 	        end
 		end
 		details
