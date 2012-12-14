@@ -13,13 +13,14 @@ class Post < ActiveRecord::Base
 	    	end
 	      #encode the string to deal with spaces
 	    end
-
+=begin
 	    Post.all.each do |post|
 	    	details = post.get_team_details
 	    	post.update_attributes(details)
 
 	    end
 	    #binding.pry
+=end
 	end
 
 
