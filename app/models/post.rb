@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
 =begin
 	    Post.all.each do |post|
 	    	new_summoners = post.find_summoner_opponents
-	    	if new_summoners.any?
+	    	if new_summoners.any? then
 		    	new_summoners.each do |opponent_name|
 		    		if Post.find_by_name(opponent_name)
 		    			Post.create(:name => opponent_name)
@@ -18,9 +18,10 @@ class Post < ActiveRecord::Base
 	    end
 =end
 	    Post.all.each do |post|
-	    	details = post.get_team_details
-	    	post.update_attributes(details)
-
+	    	if post.any? then
+		    	details = post.get_team_details
+		    	post.update_attributes(details)
+	    	end
 	    end
 	    #binding.pry
 	end
