@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   def index
     #@posts = Post.all.uniq_by{|i| i.team_name}.sort_by{|e| e.team_elo}.reverse
     #@posts = Post.all.sort()
-    #@posts = Post.select("team_elo, team_name").group("team_name").order("team_elo DESC")
-    @posts = Post.select("name, team_elo, team_name").order("team_elo DESC")
+    @posts = Post.select("team_elo, team_name").group("team_name").order("team_elo DESC")
+    #@posts = Post.select("name, team_elo, team_name").order("team_elo DESC")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
