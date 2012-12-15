@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
 	    	puts "NAME BEFORE FUNCTION CALL: #{name}"
 	    	new_summoners = post.find_summoner_opponents if !name.blank?
 	    	puts "new_summoners AFTER FUNCTION CALL: #{new_summoners}"
-	    	if new_summoners.any? then
+	    	if !new_summoners.blank? then
 		    	new_summoners.each do |opponent_name|
 		    		if !Post.exists?(name: opponent_name)
 		    			Post.create(name: opponent_name)
