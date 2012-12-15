@@ -6,8 +6,9 @@ class Post < ActiveRecord::Base
   	def self.create_team_list
 
 	    Post.all.each do |post|
-	    	puts "NAME: #{name}"
+	    	puts "NAME BEFORE FUNCTION CALL: #{name}"
 	    	new_summoners = post.find_summoner_opponents if !name.blank?
+	    	puts "new_summoners AFTER FUNCTION CALL: #{new_summoners}"
 	    	if new_summoners.any? then
 		    	new_summoners.each do |opponent_name|
 		    		if !Post.exists?(name: opponent_name)
