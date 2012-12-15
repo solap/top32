@@ -6,4 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Post.create(name: "Gold Sphinxx", team_elo: 1800, team_name: "blah")
+Post.create(name: "voyboy", team_elo: 1800, team_name: "blah")
+Post.create(name: "unstoppable", team_elo: 1800, team_name: "blah")
+Post.create(name: "chauster", team_elo: 1800, team_name: "blah")
