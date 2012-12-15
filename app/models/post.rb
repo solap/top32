@@ -19,15 +19,17 @@ class Post < ActiveRecord::Base
 	    	end
 	      #encode the string to deal with spaces
 	    end
-	    Post.all.each do |post| if new_summoners.any?
-	    	if !post.name.blank?  then
-		    	puts "SUMMONER NAME: #{post.name}"
-		    	details = post.get_team_details
-		  		puts "DETAILS: #{details}"
-		    	post.update_attributes(details)
-		    	puts "POST: #{post.inspect.to_s}"
-	    	end
-	    end
+	    if new_summoners.any?
+		    Post.all.each do |post|
+		    	if !post.name.blank?  then
+			    	puts "SUMMONER NAME: #{post.name}"
+			    	details = post.get_team_details
+			  		puts "DETAILS: #{details}"
+			    	post.update_attributes(details)
+			    	puts "POST: #{post.inspect.to_s}"
+		    	end
+		    end
+		end
 	    #binding.pry
 	end
 
