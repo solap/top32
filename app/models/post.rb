@@ -20,6 +20,7 @@ class Post < ActiveRecord::Base
 	    	end
 	      #encode the string to deal with spaces
 	    end
+	    puts "IN BETWEEN FUNCTIONS: #{new_summoners.to_s}"
 	    if !new_summoners.empty?
 	    	puts "IN NEW SUMMONERS.ANY: #{new_summoners.to_s}"
 		    Post.all.each do |post|
