@@ -2,7 +2,7 @@ module TeamBuilder
 	def find_summoner_opponents
 		lolking = "http://www.lolking.net"
 		opponents = []
-		encoded_summoner_name = CGI::escape(name)
+		encoded_summoner_name = CGI::escape(name) #if !name.blank?
 		summoner_summary_page = lolking + "/search?name=#{encoded_summoner_name}"
 		summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page))
 		summoner_summary_page_html.xpath("//div[@class='search_result_item']").each do |resultItem|

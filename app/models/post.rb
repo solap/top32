@@ -2,10 +2,12 @@ require "team_builder"
 class Post < ActiveRecord::Base
 	attr_accessible :name, :team_elo, :team_name
 	include TeamBuilder
+	validates :name, presence: true
   	def self.create_team_list
 
 	    Post.all.each do |post|
-	    	new_summoners = post.find_summoner_opponents
+	    	puts "NAME: #{name}"
+	    	new_summoners = post.find_summoner_opponents if !name.blank?
 	    	if new_summoners.any? then
 		    	new_summoners.each do |opponent_name|
 		    		if !Post.exists?(name: opponent_name)
