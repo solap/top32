@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
 	    	end
 	      #encode the string to deal with spaces
 	    end
-	    Post.all.each do |post|
+	    Post.all.each do |post| if new_summoners.any?
 	    	if !post.name.blank?  then
 		    	puts "SUMMONER NAME: #{post.name}"
 		    	details = post.get_team_details

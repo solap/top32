@@ -3,7 +3,7 @@ module TeamBuilder
 		lolking = "http://www.lolking.net"
 		opponents = []
 		puts "NAME INSIDE FUNCTION CALL: #{name}"
-		if !name.blank?
+		if !name.blank? then
 			encoded_summoner_name = CGI::escape(name) #if !name.blank?
 			puts "ENCODED_SUMMONER_NAME AFTER CGI: #{encoded_summoner_name}"
 
@@ -23,7 +23,7 @@ module TeamBuilder
 							o_name = win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
 							puts win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
 						end
-					opponents << o_name
+						opponents << o_name
 					end
 		        end
 				opponents.uniq
