@@ -3,10 +3,10 @@ module TeamBuilder
 		lolking = "http://www.lolking.net"
 		opponents = []
 		puts "NAME INSIDE FUNCTION CALL: #{name}"
-		encoded_summoner_name = CGI::escape(name) #if !name.blank?
-		puts "ENCODED_SUMMONER_NAME AFTER CGI: #{encoded_summoner_name}"
+		if !name.blank?
+			encoded_summoner_name = CGI::escape(name) #if !name.blank?
+			puts "ENCODED_SUMMONER_NAME AFTER CGI: #{encoded_summoner_name}"
 
-		if !encoded_summoner_name.blank? then
 			summoner_summary_page = lolking + "/search?name=#{encoded_summoner_name}"
 			summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page))
 			summoner_summary_page_html.xpath("//div[@class='search_result_item']").each do |resultItem|
@@ -26,8 +26,8 @@ module TeamBuilder
 					opponents << o_name
 					end
 		        end
+				opponents.uniq
 			end
-			opponents.uniq
 		else
 			nil
 		end
