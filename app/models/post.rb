@@ -20,6 +20,7 @@ class Post < ActiveRecord::Base
 	      #encode the string to deal with spaces
 	    end
 	    if new_summoners.any?
+	    	puts "IN NEW SUMMONERS.ANY: #{new_summoners}"
 		    Post.all.each do |post|
 		    	if !post.name.blank?  then
 			    	puts "SUMMONER NAME: #{post.name}"
