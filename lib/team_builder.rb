@@ -5,27 +5,32 @@ module TeamBuilder
 		puts "NAME INSIDE FUNCTION CALL: #{name}"
 		encoded_summoner_name = CGI::escape(name) #if !name.blank?
 		puts "ENCODED_SUMMONER_NAME AFTER CGI: #{encoded_summoner_name}"
-		summoner_summary_page = lolking + "/search?name=#{encoded_summoner_name}"
-		summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page))
-		summoner_summary_page_html.xpath("//div[@class='search_result_item']").each do |resultItem|
-			#No need to click on matches tab
-			onclick = resultItem['onclick']
-	        if onclick.include? 'summoner/na'
-				index = onclick.index("'") + 1
-				link = onclick[index..onclick.length-1]
-				index = link.index("'")-1
-				summoner_profile = lolking + link[0..index]
-				summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
-				summoner_profile_html.search('div.match_win','div.match_loss').each do |win_loss_div|
-					if win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)') != nil then
-						o_name = win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
-						puts win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
+
+		if !encoded_summoner_name.blank? then
+			summoner_summary_page = lolking + "/search?name=#{encoded_summoner_name}"
+			summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page))
+			summoner_summary_page_html.xpath("//div[@class='search_result_item']").each do |resultItem|
+				#No need to click on matches tab
+				onclick = resultItem['onclick']
+		        if onclick.include? 'summoner/na'
+					index = onclick.index("'") + 1
+					link = onclick[index..onclick.length-1]
+					index = link.index("'")-1
+					summoner_profile = lolking + link[0..index]
+					summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
+					summoner_profile_html.search('div.match_win','div.match_loss').each do |win_loss_div|
+						if win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)') != nil then
+							o_name = win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
+							puts win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)').content
+						end
+					opponents << o_name
 					end
-				opponents << o_name
-				end
-	        end
+		        end
+			end
+			opponents.uniq
+		else
+			nil
 		end
-		opponents.uniq
 	end
 
 	def get_team_details
