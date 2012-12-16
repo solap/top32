@@ -3,6 +3,7 @@ Top32::Application.routes.draw do
   resources :posts do
     collection do
       get:create_new_list
+      get:add_new_players
     end
 
   end

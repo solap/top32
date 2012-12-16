@@ -88,5 +88,10 @@ class PostsController < ApplicationController
     Post.create_team_list
     redirect_to posts_path
   end
+  def add_new_players
+    Post.create_team_list
+    redirect_to posts_path
+  end
+
 
 end
