@@ -89,7 +89,7 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
   def add_new_players
-    Post.create_team_list
+    Post.add_players
     redirect_to posts_path
   end
 
