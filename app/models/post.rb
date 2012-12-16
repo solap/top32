@@ -4,8 +4,18 @@ class Post < ActiveRecord::Base
 	include TeamBuilder
 	validates :name, presence: true
   	def self.create_team_list
-
-=begin
+	    Post.all.each do |post|
+	    	if !post.name.blank?  then
+		    	puts "SUMMONER NAME: #{post.name}"
+		    	details = post.get_team_details
+		  		puts "DETAILS: #{details}"
+		    	post.update_attributes(details)
+		    	puts "POST: #{post.inspect.to_s}"
+	    	end
+	    end
+	    #binding.pry
+	end
+	def self.add_players
 	    Post.all.each do |post|
 	    	puts "NAME BEFORE FUNCTION CALL: #{name}"
 	    	new_summoners = post.find_summoner_opponents if !name.blank?
@@ -21,19 +31,7 @@ class Post < ActiveRecord::Base
 	    	end
 	      #encode the string to deal with spaces
 	    end
-=end
-	    Post.all.each do |post|
-	    	if !post.name.blank?  then
-		    	puts "SUMMONER NAME: #{post.name}"
-		    	details = post.get_team_details
-		  		puts "DETAILS: #{details}"
-		    	post.update_attributes(details)
-		    	puts "POST: #{post.inspect.to_s}"
-	    	end
-	    end
-	    #binding.pry
 	end
-
 
 end
 
