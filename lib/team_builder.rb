@@ -1,5 +1,7 @@
 module TeamBuilder
+
 	def find_summoner_opponents
+		result=nil
 		lolking = "http://www.lolking.net"
 		opponents = []
 		puts "NAME INSIDE FUNCTION CALL: #{name}"
@@ -26,10 +28,11 @@ module TeamBuilder
 						opponents << o_name
 					end
 		        end
-				opponents.uniq
+		        #binding.pry
+				result = opponents.uniq
+				#binding.pry
 			end
-		else
-			nil
+			result
 		end
 	end
 

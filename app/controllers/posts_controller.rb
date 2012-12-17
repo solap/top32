@@ -1,5 +1,3 @@
-
-
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
@@ -92,6 +90,4 @@ class PostsController < ApplicationController
     Post.add_players
     redirect_to posts_path
   end
-
-
 end
