@@ -20,11 +20,14 @@ class Post < ActiveRecord::Base
 	    Post.all.each do |post|
 	    	if !name.blank?
 		    	new_summoners = post.find_summoner_opponents
+		    	puts "out of find_summoner_opponents"
 	    	end
 	    	if !new_summoners.blank? then
 		    	new_summoners.each do |opponent_name|
+		    		puts "before post"
 		    		if !Post.exists?(name: opponent_name)
 		    			result=Post.create(name: opponent_name)
+		    		puts "after post"
 		    		end
 		    	end
 	    	end
