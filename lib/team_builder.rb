@@ -6,10 +6,13 @@ module TeamBuilder
     opponents = []
     if !name.blank? then
       encoded_summoner_name = CGI::escape(name) #if !name.blank?
-      puts "encoded_summoner_name: #{encoded_summoner_name}"
+      puts "ENCODED_SUMMONER_NAME ******************: #{encoded_summoner_name}"
       summoner_summary_page = lolking + "/search?name=#{encoded_summoner_name}"
-      summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page))
+      puts "BEFORE NOKOGIRI"
+      summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page)) if summoner_summary_page #added this v1
+      puts "AFTER NOKOGIRI"
       summoner_summary_page_html.xpath("//div[@class='search_result_item']").each do |resultItem|
+        puts "AFTER SUMMONER_SUMMARY_PAGE_HTML"
         #No need to click on matches tab
         onclick = resultItem['onclick']
             if onclick.include? 'summoner/na'
@@ -17,6 +20,7 @@ module TeamBuilder
           link = onclick[index..onclick.length-1]
           index = link.index("'")-1
           summoner_profile = lolking + link[0..index]
+          puts "BEFORE SECOND NOKOGIRI"
           summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
           puts "BEFORE DO LOOP"
           summoner_profile_html.search('div.match_win','div.match_loss').each do |win_loss_div|
@@ -25,25 +29,23 @@ module TeamBuilder
               puts "before for loop"
               for i in 2..4 #for now, just do 3, but later do error checking.
                 puts "IN FOR LOOP:  #{i}."
-                #FIGURE OUT HOW TO GET i value inserted into where it says i in next line.
                 #binding.pry
                 name_div = win_loss_div.at_css("div.match_details_extended table tr td:nth-child(3) table tr:nth-child(#{i}) td:nth-child(2)")
                 #binding.pry
                 opponents<<name_div.content if name_div
-                puts "NAME ***********: #{name_div.content}" if name_div
-=begin
-                if !name_div.blank?
-                  o_name=name_div.content
-                  opponents << o_name
-                  puts ">>>>>>o_name: #{o_name}"
-                end
-=end
+                puts "OTHER NAMES ****: #{name_div.content}" if name_div
+
+                # if !name_div.blank?
+                #   o_name=name_div.content
+                #   opponents << o_name
+                #   puts ">>>>>>o_name: #{o_name}"
+                # end
+
               end
             end
             #binding.pry
-
           end
-            end
+        end
         result = opponents.uniq #<<<why ned 'return' here?
         puts "after result in loop" #why can't use o_name here?
       end
