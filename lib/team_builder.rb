@@ -1,4 +1,7 @@
 module TeamBuilder
+  # def summoner_summary_page
+
+  # end
 
   def find_summoner_opponents
     result=nil
