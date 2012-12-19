@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
 	attr_accessible :name, :team_elo, :team_name
 	include TeamBuilder
 	validates :name, presence: true, uniqueness: true
+	# fix the error that comes when i try to create
 
   	def self.create_team_list
 	    Post.all.each do |post|
