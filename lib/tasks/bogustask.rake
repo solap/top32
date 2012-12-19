@@ -23,3 +23,8 @@ task :list_names => :environment do
     puts u.name
   end
 end
+task :remove_blanks => :environment do
+  puts "Nuking all rows with blank names."
+  Post.where("name is null or name=''").destroy_all
+  puts "Done"
+end
