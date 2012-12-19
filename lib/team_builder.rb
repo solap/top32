@@ -9,46 +9,40 @@ module TeamBuilder
     opponents = []
     if !name.blank? then
       encoded_summoner_name = CGI::escape(name) #if !name.blank?
-      if encoded_summoner_name == nil then return "NILNILNILNILNILNIL"
-      end
       puts "ENCODED_SUMMONER_NAME ******************: #{encoded_summoner_name}"
       summoner_summary_page = lolking + "/search?name=#{encoded_summoner_name}"
       puts "BEFORE NOKOGIRI"
       summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page)) if summoner_summary_page #added this v1
+      if summoner_summary_page_html.blank?
+        return nil
+      end
       puts "AFTER NOKOGIRI"
       summoner_summary_page_html.xpath("//div[@class='search_result_item']").each do |resultItem|
         puts "AFTER SUMMONER_SUMMARY_PAGE_HTML"
         #No need to click on matches tab
         onclick = resultItem['onclick']
-            if onclick.include? 'summoner/na'
-          index = onclick.index("'") + 1
-          link = onclick[index..onclick.length-1]
-          index = link.index("'")-1
-          summoner_profile = lolking + link[0..index]
-          puts "BEFORE SECOND NOKOGIRI"
-          summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
-          puts "BEFORE DO LOOP"
-          summoner_profile_html.search('div.match_win','div.match_loss').each do |win_loss_div|
-            puts "BEFORE WIN_LOSS_DIV"
-            if win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)') != nil then
-              puts "before for loop"
-              for i in 2..4 #for now, just do 3, but later do error checking.
-                puts "IN FOR LOOP:  #{i}."
-                #binding.pry
-                name_div = win_loss_div.at_css("div.match_details_extended table tr td:nth-child(3) table tr:nth-child(#{i}) td:nth-child(2)")
-                #binding.pry
-                opponents<<name_div.content if name_div
-                puts "OTHER NAMES ****: #{name_div.content}" if name_div
-
-                # if !name_div.blank?
-                #   o_name=name_div.content
-                #   opponents << o_name
-                #   puts ">>>>>>o_name: #{o_name}"
-                # end
-
+          if onclick.include? 'summoner/na'
+            index = onclick.index("'") + 1
+            link = onclick[index..onclick.length-1]
+            index = link.index("'")-1
+            summoner_profile = lolking + link[0..index]
+            puts "BEFORE SECOND NOKOGIRI"
+            summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
+            puts "BEFORE DO LOOP"
+            summoner_profile_html.search('div.match_win','div.match_loss').each do |win_loss_div|
+              puts "BEFORE WIN_LOSS_DIV"
+              if win_loss_div.at_css('div.match_details_extended table tr td:nth-child(3) table tr:nth-child(2) td:nth-child(2)') != nil then
+                puts "before for loop"
+                for i in 2..4 #for now, just do 3, but later do error checking.
+                  puts "IN FOR LOOP:  #{i}."
+                  #binding.pry
+                  name_div = win_loss_div.at_css("div.match_details_extended table tr td:nth-child(3) table tr:nth-child(#{i}) td:nth-child(2)")
+                  #binding.pry
+                  opponents<<name_div.content if name_div
+                  puts "OTHER NAMES ****: #{name_div.content}" if name_div
+                end
               end
-            end
-            #binding.pry
+              #binding.pry
           end
         end
         result = opponents.uniq #<<<why ned 'return' here?
