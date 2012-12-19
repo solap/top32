@@ -5,7 +5,7 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "pg"
+gem 'pg'
 gem 'nokogiri'
 require 'open-uri'
 gem 'pry'
