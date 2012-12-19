@@ -87,6 +87,9 @@ module TeamBuilder
   end
 end
 
+def remove_dupes
+end
+
 if __FILE__ == $0 then
   require "cgi"
   require "nokogiri"
