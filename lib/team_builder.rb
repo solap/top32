@@ -9,7 +9,8 @@ module TeamBuilder
     opponents = []
     if !name.blank? then
       encoded_summoner_name = CGI::escape(name) #if !name.blank?
-      if encoded_summoner_name == nil return "NILNILNILNILNILNIL"
+      if encoded_summoner_name == nil then return "NILNILNILNILNILNIL"
+      end
       puts "ENCODED_SUMMONER_NAME ******************: #{encoded_summoner_name}"
       summoner_summary_page = lolking + "/search?name=#{encoded_summoner_name}"
       puts "BEFORE NOKOGIRI"
@@ -105,3 +106,4 @@ if __FILE__ == $0 then
   end
   FakeName.new(ARGV.first).find_summoner_opponents
 end
+

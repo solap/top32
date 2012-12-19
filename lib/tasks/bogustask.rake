@@ -25,6 +25,8 @@ task :list_names => :environment do
 end
 task :remove_blanks => :environment do
   puts "Nuking all rows with blank names."
-  Post.where("name is null or name=''").destroy_all
+  blank_rows = Post.where("name is null or name=''")
+  puts "NUMBER OF BLANK ROWS: #{blank_rows.count.to_s}"
+  blank_rows.destroy_all
   puts "Done"
 end
