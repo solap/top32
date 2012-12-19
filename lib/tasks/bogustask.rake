@@ -4,10 +4,7 @@ end
 task :remove_dupes => :environment do
   puts "Post.count: #{Post.count}"
   Post.all.each do |post|
-    dupe_collection=Post.where("id!=? and name=?", post.id, post.name)
-    dupe_collection.all.each do |dupe|
-      dupe.destroy
-    end
+    Post.where("id<>? and name=?", post.id, post.name).destroy_all
   end
   puts "Post.count: #{Post.count}"
 end

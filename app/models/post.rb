@@ -3,7 +3,7 @@ require "team_builder"
 class Post < ActiveRecord::Base
 	attr_accessible :name, :team_elo, :team_name
 	include TeamBuilder
-	validates :name, presence: true
+	validates :name, presence: true, uniqueness: true
 
   	def self.create_team_list
 	    Post.all.each do |post|
