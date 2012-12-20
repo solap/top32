@@ -45,7 +45,7 @@ end
 task :remove_blah => :environment do
   puts "Nuking all rows with blank names."
   yadda=1800
-  blah_rows = Post.where("team_elo is #{yadda}")
+  blah_rows = Post.where("team_elo is #{yadda}") # why can't i get rid of these rows?
   puts "NUMBER OF BLAH ROWS: #{blah_rows.count.to_s}"
   blah_rows.destroy_all
   puts "Done"

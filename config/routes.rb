@@ -4,8 +4,8 @@ Top32::Application.routes.draw do
     collection do
       get:create_new_list
       get:add_new_players
-      get:both
-      get:purge_players
+      get:full
+      get:cleanup
     end
   end
 root to: "posts#index"

@@ -90,9 +90,13 @@ class PostsController < ApplicationController
     Post.add_players
     redirect_to posts_path
   end
-  def both
-    Post.add_players
+  def cleanup
     Post.purge_players
+  end
+  def full
+    Post.add_players
     Post.create_team_list
+    Post.purge_players
+    redirect_to posts_path
   end
 end
