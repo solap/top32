@@ -92,7 +92,7 @@ class PostsController < ApplicationController
   end
   def both
     Post.add_players
-    Post.create_team_list
     Post.purge_players
+    Post.create_team_list
   end
 end
