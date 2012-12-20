@@ -5,8 +5,8 @@ Top32::Application.routes.draw do
       get:create_new_list
       get:add_new_players
       get:both
+      get:purge_players
     end
-
   end
 root to: "posts#index"
 
