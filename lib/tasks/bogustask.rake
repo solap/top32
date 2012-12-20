@@ -37,8 +37,8 @@ task :purge_players => :environment do
   nuke_rows = Post.where("team_elo<#{min_elo}")
   puts "NUMBER OF LOW ELO ROWS: #{nuke_rows.count.to_s}"
   nuke_rows.destroy_all
-  nuke_rows = Post.where("team_elo is NULL")
-  puts "NUMBER OF NIL ROWS: #{nuke_rows.count.to_s}"
-   nuke_rows.destroy_all
+  low_elo_rows = Post.where("team_elo is NULL")
+  puts "NUMBER OF NIL ROWS: #{low_elo_rows.count.to_s}"
+  low_elo_rows.destroy_all
   puts "Done"
 end
