@@ -30,3 +30,11 @@ task :remove_blanks => :environment do
   blank_rows.destroy_all
   puts "Done"
 end
+task :purge_players => :environment do
+  min_elo = 1400
+  puts "Nuking all players with lower than #{min_elo} elo."
+  nuke_rows = Post.where("team_elo<#{min_elo}")
+  puts "NUMBER OF NUKABLE ROWS: #{nuke_rows.count.to_s}"
+  #blank_rows.destroy_all
+  puts "Done"
+end
