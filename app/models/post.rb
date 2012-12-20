@@ -18,6 +18,7 @@ class Post < ActiveRecord::Base
 	end
 
 	def self.add_players
+
 	    Post.all.each do |post|
 	    	if !name.blank?
 		    	new_summoners = post.find_summoner_opponents

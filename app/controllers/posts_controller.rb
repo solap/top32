@@ -92,6 +92,7 @@ class PostsController < ApplicationController
   end
   def cleanup
     Post.purge_players
+    redirect_to posts_path
   end
   def full
     Post.add_players
