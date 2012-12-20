@@ -44,7 +44,8 @@ task :purge_players => :environment do
 end
 task :remove_blah => :environment do
   puts "Nuking all rows with blank names."
-  blah_rows = Post.where("team_name is blah")
+  yadda="blah"
+  blah_rows = Post.where("team_name is #{yadda}")
   puts "NUMBER OF BLAH ROWS: #{blah_rows.count.to_s}"
   blah_rows.destroy_all
   puts "Done"
