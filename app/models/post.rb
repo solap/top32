@@ -18,18 +18,19 @@ class Post < ActiveRecord::Base
 	end
 
 	def self.add_players
-
-	    Post.all.each do |post|
-	    	if !name.blank?
-		    	new_summoners = post.find_summoner_opponents
+    last_id=Post.all.last.id
+    current_players=Post.where("id<=#{last_id}")
+    current_players.all.each do |post|
+    	if !name.blank?
+	    	new_summoners = post.find_summoner_opponents
+    	end
+      #binding.pry
+      if !new_summoners.blank? then
+	    	new_summoners.each do |opponent_name|
+          result=add_player(opponent_name)
 	    	end
-        #binding.pry
-        if !new_summoners.blank? then
-  	    	new_summoners.each do |opponent_name|
-            result=add_player(opponent_name)
-  	    	end
-        end
-	    end
+      end
+    end
 	end
 
   def self.purge_players

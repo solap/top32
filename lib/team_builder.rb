@@ -89,18 +89,6 @@ def add_player(opponent_name)
   end
 end
 
-def purge_players
-  min_elo = 1600
-  puts "Nuking all players with lower than #{min_elo} team elo."
-  puts "Total rows: #{Post.count}"
-  nuke_rows = Post.where("team_elo<#{min_elo}")
-  puts "NUMBER OF LOW ELO ROWS: #{nuke_rows.count.to_s}"
-  nuke_rows.destroy_all
-  low_elo_rows = Post.where("team_elo is NULL")
-  puts "NUMBER OF NIL ROWS: #{low_elo_rows.count.to_s}"
-  low_elo_rows.destroy_all
-  puts "Done with purging."
-end
 
 if __FILE__ == $0 then
   require "cgi"
