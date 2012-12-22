@@ -1,6 +1,6 @@
-require "spec_helper.rb"
+require "spec_helper"
 
-describe "team_builder" do
+describe TeamBuilder do
   describe "get_team_details" do
 
     it "returns 'none' when player has no team" do
