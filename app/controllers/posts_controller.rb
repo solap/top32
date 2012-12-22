@@ -91,9 +91,11 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
   def cleanup
-    Post.purge_players
+    Post.purge_low_elo_players
+    Post.purge_no_team_players
     redirect_to posts_path
   end
+
   def full
     Post.add_players
     Post.purge_low_elo_players
