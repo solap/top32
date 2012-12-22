@@ -33,16 +33,24 @@ class Post < ActiveRecord::Base
     end
 	end
 
-  def self.purge_players
+  def self.purge_low_elo_players
     min_elo = 1600
-    puts "Nuking all players with lower than #{min_elo} team elo."
     puts "Total rows: #{Post.count}"
     nuke_rows = Post.where("team_elo<#{min_elo}")
+    puts "Nuking all players with lower than #{min_elo} team elo."
     puts "NUMBER OF LOW ELO ROWS: #{nuke_rows.count.to_s}"
     nuke_rows.destroy_all
-    low_elo_rows = Post.where("team_elo is NULL")
-    puts "NUMBER OF NIL ROWS: #{low_elo_rows.count.to_s}"
-    low_elo_rows.destroy_all
-    puts "Done with purging."
+    puts "Done with purging low elo players."
+    puts "Total rows: #{Post.count}"
   end
+
+  def self.purge_no_team_players
+    puts "Total rows: #{Post.count}"
+    nuke_rows = Post.where("team_elo is NULL")
+    puts "NUMBER OF ROWS WITH NO TEAMS: #{nuke_rows.count.to_s}"
+    nuke_rows.destroy_all
+    puts "Done with purging players with no team."
+    puts "Total rows: #{Post.count}"
+  end
+
 end
