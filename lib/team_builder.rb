@@ -68,6 +68,11 @@ module TeamBuilder
         end
       end
     end
+    if details then
+      return details
+    else
+      "none"
+    end
   end
 end
 
