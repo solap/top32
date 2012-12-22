@@ -62,10 +62,12 @@ module TeamBuilder
           details[:name]=name
           details[:team_name]=team_name.inspect
           details[:team_elo]=points.to_i
+          details
+        else
+          "none"
         end
       end
     end
-    details
   end
 end
 
