@@ -14,14 +14,14 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2012-12-22T23:11:29+01:00">2012-12-22T23:11:29+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2012-12-22T23:19:44+01:00">2012-12-22T23:19:44+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">36.49%</span></span>
+    (<span class="covered_percent"><span class="red">36.77%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>19</b> files in total.
-    <b>222</b> relevant lines. 
-    <span class="green"><b>81</b> lines covered</span> and
+    <b>223</b> relevant lines. 
+    <span class="green"><b>82</b> lines covered</span> and
     <span class="red"><b>141</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -232,10 +232,10 @@
       
       <tr>
         <td class="strong"><a href="#912b3f75c3df628094b50cc26304c58cd1b6fbc4" class="src_link" title="spec/lib/team_builder_spec.rb">spec/lib/team_builder_spec.rb</a></td>
-        <td class="red strong">57.14 %</td>
-        <td>11</td>
-        <td>7</td>
-        <td>4</td>
+        <td class="red strong">62.5 %</td>
+        <td>13</td>
+        <td>8</td>
+        <td>5</td>
         <td>3</td>
         <td>0.6</td>
       </tr>
@@ -3811,10 +3811,10 @@
         <div class="source_table" id="912b3f75c3df628094b50cc26304c58cd1b6fbc4">
   <div class="header">
     <h3>spec/lib/team_builder_spec.rb</h3>
-    <h4><span class="red">57.14 %</span> covered</h4>
+    <h4><span class="red">62.5 %</span> covered</h4>
     <div>
-      <b>7</b> relevant lines. 
-      <span class="green"><b>4</b> lines covered</span> and
+      <b>8</b> relevant lines. 
+      <span class="green"><b>5</b> lines covered</span> and
       <span class="red"><b>3</b> lines missed.</span>
     </div>
   </div>
@@ -3825,7 +3825,7 @@
         <li class="covered" data-hits="1" data-linenumber="1">
           <span class="hits">1</span>
           
-          <code class="ruby">require &quot;team_builder&quot; #loading the file with a pre-pended lib</code>
+          <code class="ruby">require &quot;spec_helper.rb&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="2">
@@ -3837,52 +3837,64 @@
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
-          <code class="ruby">describe &quot;get_team_details&quot; do</code>
+          <code class="ruby">describe &quot;team_builder&quot; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe &quot;get_team_details&quot; do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  it &quot;returns 'none' when player has no team&quot; do</code>
-        </li>
-      
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">      post = Post.new</code>
+          <code class="ruby">    it &quot;returns 'none' when player has no team&quot; do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="7">
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      post.name = &quot;yadda&quot;</code>
+          <code class="ruby">        post = Post.new</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="8">
           
           
-          <code class="ruby">      details = post.get_team_details</code>
+          <code class="ruby">        post.name = &quot;yadda&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="9">
           
           
-          <code class="ruby">      yadda.should eq(&quot;none&quot;)</code>
+          <code class="ruby">        yadda = post.get_team_details</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="10">
+        <li class="missed" data-hits="0" data-linenumber="10">
+          
+          
+          <code class="ruby">        yadda.should eq(&quot;none&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="11">
+        <li class="never" data-hits="" data-linenumber="13">
           
           
           <code class="ruby">end</code>
