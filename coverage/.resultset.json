@@ -226,8 +226,8 @@
         1,
         null,
         null,
-        null,
         0,
+        null,
         null,
         0,
         0,
@@ -497,6 +497,13 @@
         null,
         null
       ],
+      "/Users/joel.dehlin/top32/spec/factories/posts.rb": [
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
       "/Users/joel.dehlin/top32/config/routes.rb": [
         1,
         null,
@@ -582,8 +589,9 @@
         1,
         null,
         1,
+        null,
         1,
-        0,
+        null,
         0,
         0,
         null,
@@ -591,6 +599,6 @@
         null
       ]
     },
-    "timestamp": 1356215017
+    "timestamp": 1356215665
   }
 }
