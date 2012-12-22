@@ -6,8 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Post.create(name: "rule18", team_elo: 1800, team_name: "blah")
-Post.create(name: "voyboy", team_elo: 1800, team_name: "blah")
+Post.create(name: "veetine", team_elo: 1800, team_name: 'blah')
+Post.create(name: "shaosters", team_elo: 1800, team_name: 'blah')
+Post.create(name: "Minday Nam", team_elo: 1800, team_name: 'blah')
+Post.create(name: "Sycho Squid", team_elo: 1800, team_name: 'blah')
+Post.create(name: "BIoodWater", team_elo: 1800, team_name: 'blah')
+Post.create(name: "AriesLL", team_elo: 1800, team_name: 'blah')
+Post.create(name: "L0cust", team_elo: 1800, team_name: 'blah')
+Post.create(name: "Quantic Hai", team_elo: 1800, team_name: 'blah')
+
 
 # Post.create(name: "Onionbagel", team_elo: 1800, team_name: "blah")
 # Post.create(name: "Cris", team_elo: 1800, team_name: "blah")
