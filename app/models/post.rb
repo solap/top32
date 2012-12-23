@@ -6,15 +6,13 @@ class Post < ActiveRecord::Base
 	validates :name, presence: true, uniqueness: true
 	# fix the error that comes when i try to create
 
-  	def self.create_team_list
-	    Post.all.each do |post|
-	    	if !post.name.blank?  then
-		    	details = post.get_team_details
-		    	post.update_attributes(details)
-		    	#binding.pry
-	    	end
-	    end
-	    #binding.pry
+	def self.create_team_list
+    Post.all.each do |post|
+    	if !post.name.blank?  then
+	    	details = post.get_team_details
+	    	post.update_attributes(details) if details != "none"
+    	end
+    end
 	end
 
 	def self.add_players
