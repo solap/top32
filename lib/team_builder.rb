@@ -62,15 +62,16 @@ module TeamBuilder
           details[:name]=name
           details[:team_name]=team_name.inspect
           details[:team_elo]=points.to_i
-          details
+          #details
         end
       end
     end
-    if !details.empty? then
-      return details
-    else
-      return "none"
+    if details.empty?
+      details[:name]=name
+      details[:team_name]="none"
+      details[:team_elo]="1000"
     end
+    details
   end
 end
 

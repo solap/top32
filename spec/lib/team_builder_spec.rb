@@ -7,7 +7,7 @@ describe TeamBuilder do
         post = FactoryGirl.create(:post, name: "yadda")
         #post.name = "yadda"
         yadda = post.get_team_details
-        yadda.should eq("none")
+        yadda[:team_name].should_not be ("none")  #how do i say "not be empty?"
     end
     it "returns details[] when player has a team" do
         #post = Post.new
@@ -18,7 +18,6 @@ describe TeamBuilder do
         puts yadda.to_a
         yadda[:name].should eq("tamtar")
         yadda[:team_name].should_not be ("")  #how do i say "not be empty?"
-
     end
   end
 end
