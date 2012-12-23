@@ -74,6 +74,16 @@ module TeamBuilder
     details
   end
 end
+def is_eligible?(team_name)
+  return nil if !team_name.is_a?(String)
+  array = Array.new
+  array << "Counter Logic Gaming" << "Team Solo Mid" << "Azure G4ming"
+  if array.include?(team_name)
+    false
+  else
+    true
+  end
+end
 
 def player_exist?(opponent_name)
   return nil if opponent_name.empty?
