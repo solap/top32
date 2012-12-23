@@ -1,3 +1,4 @@
+
 <h1>Listing posts</h1>
 
 <table>
@@ -9,9 +10,9 @@
 
 <% @posts.each_with_index do |post, index| %>
   <tr>
-    <td><%= index+1 if is_eligible(post.team_name)%></td>
-    <td><%= post.team_elo if is_eligible(post.team_name)%></td>
-    <td><%= post.team_name if is_eligible(post.team_name)%></td>
+    <td><%= index+1 if is_eligible(true)%></td>
+    <td><%= post.team_elo if is_eligible(true)%></td>
+    <td><%= post.team_name if is_eligible(true)%></td>
 
   </tr>
 <% end %>
