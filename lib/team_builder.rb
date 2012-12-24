@@ -49,15 +49,10 @@ module TeamBuilder
     summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page))
     summoner_summary_page_html.xpath("//div[@class='search_result_item']").each do |resultItem|
       onclick = resultItem['onclick']
-    puts onclick.inspect
       if onclick.include? 'summoner/na'
-    puts "6"
         index = onclick.index("'") + 1
-    puts "7"
         link = onclick[index..onclick.length-1]
-    puts "8"
         index = link.index("'")-1
-    puts "9"
         summoner_profile = lolking + link[0..index]
         puts "before summoner_profile_html return"
         summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
@@ -75,13 +70,17 @@ module TeamBuilder
           #details
         end
       end
+      puts "out of if"
     end
+    puts "out of another if"
     if details.empty?
+      puts "in new if"
       #binding.pry
       details[:name]=name
       details[:team_name]="none"
       details[:team_elo]=1000
     end
+    puts "***"
     #binding.pry
   end
 
