@@ -13,11 +13,11 @@ United Diversity:
   </tr>
 
 <% @posts.each_with_index do |post, index| %>
-  <% unless @post.is_eligible? %>    <tr>
+  <% if post.is_eligible? %>
+    <tr>
       <td><%= index+1 %></td>
       <td><%= post.team_elo %></td>
       <td><%= post.team_name %></td>
-
     </tr>
   <% end %>
 <% end %>
