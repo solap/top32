@@ -19,6 +19,12 @@ describe TeamBuilder do
         yadda[:name].should eq("rule18")
         yadda[:team_name].should_not be ("")  #how do i say "not be empty?"
     end
+    it "returns exits gracefully when a player no longer has a lolking page" do
+        post = FactoryGirl.create(:post, name: "PaprikaCC")
+        yadda = post.get_team_details
+        yadda.should eq(nil)
+    end
+
   end
   describe "is_eligible?" do
     it "returns a false if post.name is not one of a list" do

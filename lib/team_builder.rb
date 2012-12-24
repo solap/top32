@@ -49,7 +49,7 @@ module TeamBuilder
     summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page))
     summoner_summary_page_html.xpath("//div[@class='search_result_item']").each do |resultItem|
       onclick = resultItem['onclick']
-    puts onclick.inspect.to_a
+    puts onclick.inspect
       if onclick.include? 'summoner/na'
     puts "6"
         index = onclick.index("'") + 1
