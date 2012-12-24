@@ -45,14 +45,23 @@ module TeamBuilder
     lolking = "http://www.lolking.net"
     puts "NAME: #{name}"
     encoded_summoner_name = CGI::escape(name)
+    puts "1"
     summoner_summary_page = lolking + "/search?name=#{encoded_summoner_name}"
+    puts "2"
     summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page))
+    puts "3"
     summoner_summary_page_html.xpath("//div[@class='search_result_item']").each do |resultItem|
+    puts "4"
       onclick = resultItem['onclick']
+    puts "5"
       if onclick.include? 'summoner/na'
+    puts "6"
         index = onclick.index("'") + 1
+    puts "7"
         link = onclick[index..onclick.length-1]
+    puts "8"
         index = link.index("'")-1
+    puts "9"
         summoner_profile = lolking + link[0..index]
         puts "before summoner_profile_html return"
         summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
