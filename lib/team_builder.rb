@@ -43,6 +43,7 @@ module TeamBuilder
   def get_team_details
     details = {}
     lolking = "http://www.lolking.net"
+    puts "NAME: #{name}"
     encoded_summoner_name = CGI::escape(name)
     summoner_summary_page = lolking + "/search?name=#{encoded_summoner_name}"
     summoner_summary_page_html = Nokogiri::HTML(open(summoner_summary_page))
@@ -55,10 +56,11 @@ module TeamBuilder
         summoner_profile = lolking + link[0..index]
         summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
         team_name = summoner_profile_html.at_css("ul.personal_ratings li:last div:nth-child(2)").text
+        puts "right before team_name check."
         if team_name != ""
           points = summoner_profile_html.at_css("ul.personal_ratings li:last div:nth-child(7) span").text
           #detail = summoner_profile_html.at_css("title").text
-          puts points.to_s + team_name.inspect
+          puts "TEAM: #{points.to_s}  #{team_name.inspect}"
           details[:name]=name
           details[:team_name]=team_name.inspect.tr('"', '')
           #binding.pry
