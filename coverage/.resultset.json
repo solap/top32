@@ -429,16 +429,30 @@
         null,
         null,
         1,
+<<<<<<< HEAD
+=======
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+>>>>>>> v2
         1,
         1,
         1,
         1,
         1,
         1,
+<<<<<<< HEAD
         3,
         3,
         1,
         1,
+=======
+>>>>>>> v2
         1,
         1,
         1,
@@ -463,8 +477,25 @@
         null,
         null,
         1,
+<<<<<<< HEAD
         0,
         0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+=======
+        null,
+        null,
+        null,
+        null,
+        2,
+>>>>>>> v2
+        1,
         0,
         0,
         0,
@@ -474,13 +505,76 @@
         null,
         null,
         1,
+<<<<<<< HEAD
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
         0,
         0,
         0,
         null,
         0,
+        0,
+        0,
+=======
+        1,
+        null,
+        2,
         null,
         null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        null,
+        1,
+>>>>>>> v2
+        null,
+        null,
+        0,
+        null,
+        null
+      ],
+      "/Users/joel.dehlin/top32/spec/factories/posts.rb": [
+        1,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+<<<<<<< HEAD
+        null
+      ],
+      "/Users/joel.dehlin/top32/config/routes.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+=======
+        0,
+>>>>>>> v2
+        null,
+        null,
+        1,
         null,
         1,
         0,
@@ -596,6 +690,10 @@
         null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1356337012
+=======
+    "timestamp": 1356336972
+>>>>>>> v2
   }
 }
