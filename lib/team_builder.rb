@@ -61,7 +61,7 @@ module TeamBuilder
           puts points.to_s + team_name.inspect
           details[:name]=name
           details[:team_name]=team_name.inspect.tr('"', '')
-          binding.pry
+          #binding.pry
           details[:team_elo]=points.to_i
           #details
         end
