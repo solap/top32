@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
     	if !post.name.blank?  then
 	    	details = post.get_team_details
         #binding.pry
-	    	post.update_attributes(details) if details != "none"
+	    	post.update_attributes(details) if details != "none" and !details.empty?
     	end
     end
 	end
