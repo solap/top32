@@ -54,7 +54,9 @@ module TeamBuilder
         link = onclick[index..onclick.length-1]
         index = link.index("'")-1
         summoner_profile = lolking + link[0..index]
+        puts "before summoner_profile_html return"
         summoner_profile_html = Nokogiri::HTML(open(summoner_profile))
+        puts "after summoner_profile_html return"
         team_name = summoner_profile_html.at_css("ul.personal_ratings li:last div:nth-child(2)").text
         puts "right before team_name check."
         if team_name != ""
@@ -81,7 +83,7 @@ module TeamBuilder
   def is_eligible?
     return nil if !self.team_name.is_a?(String)
     array = Array.new
-    array << "Counter Logic Gaming" << "Team Solo Mid" << "\"Azure G4ming"
+    array << "\"Counter Logic Gaming\"" << "\"Team Solo Mid\"" << "\"Azure G4ming\""
     if array.include?(self.team_name)
       false
     else
