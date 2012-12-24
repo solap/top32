@@ -73,11 +73,12 @@ module TeamBuilder
     end
     details
   end
+
   def is_eligible?
-    return nil if !post.team_name.is_a?(String)
+    return nil if !self.team_name.is_a?(String)
     array = Array.new
     array << "Counter Logic Gaming" << "Team Solo Mid" << "Azure G4ming"
-    if array.include?(post.team_name)
+    if array.include?(self.team_name)
       false
     else
       true

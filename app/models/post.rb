@@ -22,6 +22,7 @@ class Post < ActiveRecord::Base
     current_players.all.each do |post|
     	if !name.blank?
 	    	new_summoners = post.find_summoner_opponents
+        post.is_eligible?
     	end
       #binding.pry
       if !new_summoners.blank? then
