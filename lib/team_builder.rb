@@ -81,6 +81,7 @@ module TeamBuilder
       details[:team_elo]=1000
     end
     puts "***"
+    details
     #binding.pry
   end
 
