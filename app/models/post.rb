@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
     Post.all.each do |post|
     	if !post.name.blank?  then
 	    	details = post.get_team_details
+        #binding.pry
 	    	post.update_attributes(details) if details != "none"
     	end
     end

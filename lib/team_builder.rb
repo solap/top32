@@ -60,24 +60,26 @@ module TeamBuilder
           #detail = summoner_profile_html.at_css("title").text
           puts points.to_s + team_name.inspect
           details[:name]=name
-          details[:team_name]=team_name.inspect
+          details[:team_name]=team_name.inspect.tr('"', '')
+          binding.pry
           details[:team_elo]=points.to_i
           #details
         end
       end
     end
     if details.empty?
+      #binding.pry
       details[:name]=name
       details[:team_name]="none"
-      details[:team_elo]="1000"
+      details[:team_elo]=1000
     end
-    details
+    #binding.pry
   end
 
   def is_eligible?
     return nil if !self.team_name.is_a?(String)
     array = Array.new
-    array << "\"Counter Logic Gaming\"" << "\"Team Solo Mid\"" << "\"Azure G4ming\""
+    array << "Counter Logic Gaming" << "Team Solo Mid" << "\"Azure G4ming"
     if array.include?(self.team_name)
       false
     else
