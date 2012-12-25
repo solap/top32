@@ -6,6 +6,7 @@ Top32::Application.routes.draw do
       get:add_new_players
       get:full
       get:cleanup
+      get:purge_low_elo
     end
   end
 root to: "posts#index"
