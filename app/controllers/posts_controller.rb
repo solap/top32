@@ -96,6 +96,10 @@ class PostsController < ApplicationController
     Post.purge_no_team_players
     redirect_to posts_path
   end
+  def purge_low_elo
+    Post.purge_low_elo_players
+    redirect_to posts_path
+  end
 
   def full
     Post.add_players
