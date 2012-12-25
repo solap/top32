@@ -11,6 +11,7 @@ United Diversity:
     <th>Elo</th>
     <th>Team name</th>
   </tr>
+<% index = 0%>
 
 <% @posts.each_with_index do |post, index| %>
   <% unless !post.is_eligible? %>
@@ -18,6 +19,7 @@ United Diversity:
       <td><%= index+1 %></td>
       <td><%= post.team_elo %></td>
       <td><%= post.team_name %></td>
+      <% index = index + 1%>
     </tr>
   <% end %>
 <% end %>
