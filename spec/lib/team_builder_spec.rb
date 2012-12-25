@@ -20,7 +20,7 @@ describe TeamBuilder do
         yadda[:team_name].should_not be ("")  #how do i say "not be empty?"
     end
     it "returns nil when a player no longer has a lolking page" do
-        post = FactoryGirl.create(:post, name: "tamtar")
+        post = FactoryGirl.create(:post, name: "paprika")
         yadda = post.get_team_details
         yadda.should eq(nil)
     end
