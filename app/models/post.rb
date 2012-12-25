@@ -34,7 +34,7 @@ class Post < ActiveRecord::Base
 	end
 
   def self.purge_low_elo_players
-    min_elo = 1500
+    min_elo = 1600
     puts "Total rows: #{Post.count}"
     nuke_rows = Post.where("team_elo<#{min_elo}")
     puts "Nuking all players with lower than #{min_elo} team elo."
